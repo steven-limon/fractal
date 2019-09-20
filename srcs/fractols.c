@@ -6,12 +6,14 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 21:00:06 by slimon            #+#    #+#             */
-/*   Updated: 2019/09/18 22:32:48 by slimon           ###   ########.fr       */
+/*   Updated: 2019/09/19 19:45:39 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define RADIUS_TWO_SQR 4
 #define SQR(x) ((x) * (x))
+
+#include <fractol.h>
 
 int	mandelbrot(t_frac *frac, float x, float y)
 {

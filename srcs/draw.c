@@ -6,11 +6,13 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 03:56:41 by slimon            #+#    #+#             */
-/*   Updated: 2019/09/19 17:31:27 by slimon           ###   ########.fr       */
+/*   Updated: 2019/09/19 19:45:56 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	put_pixel_to_img(t_vars *vars, int x, int y, int color)
+#include <fractol.h>
+
+static void	put_pixel_to_img(t_vars *vars, int x, int y, int color)
 {
 	uint32_t *color_data;
 
@@ -18,7 +20,7 @@ void	put_pixel_to_img(t_vars *vars, int x, int y, int color)
 	color_data[x + y * (vars->image->sl / 4)] = color;
 }
 
-void	draw(s_vars *vars)
+static void	draw(s_vars *vars)
 {
 	int			x;
 	int			y;
@@ -45,7 +47,7 @@ void	draw(s_vars *vars)
 	mlx_put_image_to_window(vars->ctx, vars->win, vars->image, 0, 0);
 }
 
-void	loop_cb(s_vars *vars)
+void		loop_cb(s_vars *vars)
 {
 	draw(vars);
 }
