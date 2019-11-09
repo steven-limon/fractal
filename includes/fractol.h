@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:34:05 by slimon            #+#    #+#             */
-/*   Updated: 2019/10/26 18:46:02 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/08 22:59:33 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,8 @@
 # include <libft.h>
 # include "keys_consts.h"
 
-//# define WIDTH 1024
-//# define HEIGHT 1024
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
-# define ZOOM_DEF 2
-# define PAN_DEF .01
-# define KEY_PRESS_EVENT 2
-# define WINDOW_CLOSE_EVENT 17
-# define MOUSE_MOVE_EVENT 6
 
 typedef struct	s_frac
 {
@@ -34,15 +27,18 @@ typedef struct	s_frac
 	float		re;
 	float		im;
 	int			max_iter;
+	float		C_y;
+	float		C_x;
 }				t_frac;
 
 typedef struct	s_vars
 {
+	float		(*frac_fun[4])(float *t_frac, float i);
+	int			fun_select;
     void		*ctx;
 	void		*win;
 	float		mouse_x;
 	float		mouse_y;
-	int			mouse_moved;
 	float		zoom;
 	float		x_pan;
 	float		y_pan;
@@ -58,9 +54,10 @@ typedef struct	s_vars
 /*
 ** fractols.c
 */
-float				mandelbrot(t_frac *frac, float x, float y, float i);
-float				julia(t_frac *frac, float x, float y, float i, float C_x, float C_y);
-float				biomorph(t_frac *frac, float x, float y, float C_x, float C_y);
+float			mandelbrot(t_frac *frac, int i);
+float			julia(t_frac *frac, int i);
+float			julia_cubed(t_frac *frac, int i);
+float			bship(t_frac *frac, int i);
 
 /*
 ** controls.c
@@ -71,11 +68,15 @@ void			zoom(int key, t_vars *vars);
 /*
 ** draw.c
 */
-void	draw(t_vars *vars);
+void			draw(t_vars *vars);
 
 /*
 ** callbacks.c
 */
+# define KEY_PRESS_EVENT 2
+# define WINDOW_CLOSE_EVENT 17
+# define MOUSE_MOVE_EVENT 6
+
 int				key_press_cb(int keycode, t_vars *vars);
 int				mouse_move_cb(int x, int y, t_vars *vars);
 int				loop_cb(t_vars *vars);
@@ -84,5 +85,5 @@ int				exit_cb(t_vars *vars);
 /*
 ** hooks.c
 */
-void	setup_hooks(t_vars *vars);
+void			setup_hooks(t_vars *vars);
 #endif
