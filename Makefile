@@ -6,7 +6,7 @@
 #    By: slimon <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 00:08:39 by slimon            #+#    #+#              #
-#    Updated: 2019/09/19 19:45:11 by slimon           ###   ########.fr        #
+#    Updated: 2019/11/08 23:42:40 by slimon           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,6 @@ MLXDIR = libs/minilibx
 
 SDIR=./srcs
 _SRC	=	fractols.c\
-			controls.c\
 			callbacks.c\
 			hooks.c\
 			draw.c\
