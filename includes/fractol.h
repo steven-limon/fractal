@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:34:05 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:41:52 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:58:30 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 typedef struct	s_frac
 {
-    float		mouse_x;
+	float		mouse_x;
 	float		mouse_y;
 	int			max_iter;
 }				t_frac;
@@ -36,7 +36,7 @@ typedef struct	s_vars
 	float		(*frac_fun[4])(t_frac *frac, int i, float x, float y);
 	int			max_iter;
 	int			fun_select;
-    void		*ctx;
+	void		*ctx;
 	void		*win;
 	float		mouse_x;
 	float		mouse_y;
@@ -55,10 +55,10 @@ typedef struct	s_vars
 /*
 ** fractols.c
 */
-float	mandelbrot(t_frac *frac, int i, float x, float y);
-float	julia(t_frac *frac, int i, float x, float y);
-float	julia_cubed(t_frac *frac, int i, float x, float y);
-float	bship(t_frac *frac, int i, float x, float y);
+float			mandelbrot(t_frac *frac, int i, float x, float y);
+float			julia(t_frac *frac, int i, float x, float y);
+float			julia_cubed(t_frac *frac, int i, float x, float y);
+float			bship(t_frac *frac, int i, float x, float y);
 /*
 ** controls.c
 */

@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 03:56:41 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:42:18 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:57:39 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	put_pixel_to_img(t_vars *vars, int x, int y, uint32_t color)
 	color_data[x + y * vars->pixel_size] = color;
 }
 
-void	draw(t_vars *vars)
+void		draw(t_vars *vars)
 {
 	int			x;
 	int			y;
@@ -36,7 +36,8 @@ void	draw(t_vars *vars)
 		x = -1;
 		while (++x < WIN_WIDTH)
 		{
-			i = vars->frac_fun[vars->fun_select](&frac, -1, (float)x / (float)vars->zoom - X_PAN_DEF, (float)y / (float)vars->zoom - Y_PAN_DEF);
+			i = vars->frac_fun[vars->fun_select](&frac, -1,
+x / (float)vars->zoom - X_PAN_DEF, y / (float)vars->zoom - Y_PAN_DEF);
 			put_pixel_to_img(vars, x, y, i * 0xAA + i * 0xFF00 + i * 0xCB0000);
 		}
 	}

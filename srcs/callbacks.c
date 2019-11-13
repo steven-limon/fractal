@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 20:44:41 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/09 00:25:07 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:57:03 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		scroll_cb(int key, int x, int y, t_vars *vars)
 		else if (key == 5 && vars->zoom > INT_MIN)
 			vars->zoom -= 100;
 	}
-	draw(vars); 
+	draw(vars);
 	return (0);
 }
 
