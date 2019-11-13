@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 03:56:41 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:17:10 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:42:18 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ void	draw(t_vars *vars)
 		x = -1;
 		while (++x < WIN_WIDTH)
 		{
-			//i = mandelbrot(&(t_frac){.x = x / (float)ZOOM_DEF - X_PAN_DEF , .y = y / (float)ZOOM_DEF - Y_PAN_DEF, 0}, 0, 50);
-			//i = julia(&fractal, 0, 40);
-			//i = mandelbrot(&frac, -1, (float)x / (float)ZOOM_DEF - X_PAN_DEF, (float)y / (float)ZOOM_DEF - Y_PAN_DEF);
-			i = vars->frac_fun[vars->fun_select](&frac, -1, (float)x / (float)ZOOM_DEF - X_PAN_DEF, (float)y / (float)ZOOM_DEF - Y_PAN_DEF);
+			i = vars->frac_fun[vars->fun_select](&frac, -1, (float)x / (float)vars->zoom - X_PAN_DEF, (float)y / (float)vars->zoom - Y_PAN_DEF);
 			put_pixel_to_img(vars, x, y, i * 0xAA + i * 0xFF00 + i * 0xCB0000);
 		}
 	}

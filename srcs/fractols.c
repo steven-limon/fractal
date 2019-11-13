@@ -6,12 +6,11 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 21:00:06 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:15:24 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:44:10 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define RADIUS_TWO_SQR 4
-#define MAX_ITER 40
 #define SQR(x) ((x) * (x))
 #include <math.h>
 #include <fractol.h>
@@ -26,12 +25,12 @@ float	mandelbrot(t_frac *frac, int i, float x, float y)
 
 	z_re = x;
 	z_im = y;
-	while (++i <= 50)
+	while (++i <= frac->max_iter)
 	{
 		sqr_z_re = z_re * z_re;
 		sqr_z_im = z_im * z_im;
 		if (sqr_z_re + sqr_z_im > RADIUS_TWO_SQR)
-			return ((float)i / (float)50.0);
+			return ((float)i / (float)frac->max_iter);
 		tmp_z_im = 2 * z_re * z_im + y;
 		z_re = sqr_z_re - sqr_z_im + x;
 		z_im = tmp_z_im;

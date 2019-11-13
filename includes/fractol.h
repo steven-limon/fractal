@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:34:05 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:15:03 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:41:52 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ void			draw(t_vars *vars);
 /*
 ** callbacks.c
 */
-# define KEY_PRESS_EVENT 2
-# define WINDOW_CLOSE_EVENT 17
-# define MOUSE_MOVE_EVENT 6
-
 int				key_press_cb(int keycode, t_vars *vars);
 int				mouse_move_cb(int x, int y, t_vars *vars);
 int				loop_cb(t_vars *vars);
