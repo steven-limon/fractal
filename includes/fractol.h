@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:34:05 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/08 22:59:33 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/12 21:15:03 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
+# define X_PAN_DEF 2.0
+# define Y_PAN_DEF 1.5
+# define ZOOM_DEF 200.0
+# define MAX_ITER_DEF 50
 
 typedef struct	s_frac
 {
-    float		x;
-	float		y;
-	float		re;
-	float		im;
+    float		mouse_x;
+	float		mouse_y;
 	int			max_iter;
-	float		C_y;
-	float		C_x;
 }				t_frac;
 
 typedef struct	s_vars
 {
-	float		(*frac_fun[4])(float *t_frac, float i);
+	float		(*frac_fun[4])(t_frac *frac, int i, float x, float y);
+	int			max_iter;
 	int			fun_select;
     void		*ctx;
 	void		*win;
@@ -42,23 +43,22 @@ typedef struct	s_vars
 	float		zoom;
 	float		x_pan;
 	float		y_pan;
-	t_frac		*frac;
 	void		*image;
 	char		*pixels;
 	int			*colors;
 	int			sl;
 	int			bpp;
 	int			endian;
+	int			pixel_size;
 }				t_vars;
 
 /*
 ** fractols.c
 */
-float			mandelbrot(t_frac *frac, int i);
-float			julia(t_frac *frac, int i);
-float			julia_cubed(t_frac *frac, int i);
-float			bship(t_frac *frac, int i);
-
+float	mandelbrot(t_frac *frac, int i, float x, float y);
+float	julia(t_frac *frac, int i, float x, float y);
+float	julia_cubed(t_frac *frac, int i, float x, float y);
+float	bship(t_frac *frac, int i, float x, float y);
 /*
 ** controls.c
 */
@@ -81,6 +81,7 @@ int				key_press_cb(int keycode, t_vars *vars);
 int				mouse_move_cb(int x, int y, t_vars *vars);
 int				loop_cb(t_vars *vars);
 int				exit_cb(t_vars *vars);
+int				scroll_cb(int key, int x, int y, t_vars *vars);
 
 /*
 ** hooks.c
