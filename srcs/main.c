@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 21:54:15 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:56:49 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/15 15:39:39 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	init(t_vars *vars, int mode)
 	vars->mouse_x = 0;
 	vars->mouse_y = 0;
 	vars->zoom = ZOOM_DEF;
+	vars->zoom_speed = 1;
 	vars->max_iter = MAX_ITER_DEF;
 }
 

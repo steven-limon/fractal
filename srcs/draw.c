@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 03:56:41 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:57:39 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/15 15:30:39 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		draw(t_vars *vars)
 		while (++x < WIN_WIDTH)
 		{
 			i = vars->frac_fun[vars->fun_select](&frac, -1,
-x / (float)vars->zoom - X_PAN_DEF, y / (float)vars->zoom - Y_PAN_DEF);
+x / (float)vars->zoom - vars->x_pan, y / (float)vars->zoom - vars->y_pan);
 			put_pixel_to_img(vars, x, y, i * 0xAA + i * 0xFF00 + i * 0xCB0000);
 		}
 	}

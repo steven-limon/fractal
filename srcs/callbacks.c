@@ -6,7 +6,7 @@
 /*   By: slimon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 20:44:41 by slimon            #+#    #+#             */
-/*   Updated: 2019/11/12 21:57:03 by slimon           ###   ########.fr       */
+/*   Updated: 2019/11/15 15:49:05 by slimon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include <fractol.h>
 #include <limits.h>
-
+#include <stdio.h>
 int		key_press_cb(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_RIGHT)
@@ -31,11 +31,16 @@ int		key_press_cb(int keycode, t_vars *vars)
 		vars->y_pan = Y_PAN_DEF;
 		vars->zoom = ZOOM_DEF;
 		vars->max_iter = MAX_ITER_DEF;
+		vars->zoom_speed = 1;
 	}
 	else if (keycode == KEY_UP && vars->max_iter < 300)
 		vars->max_iter += 10;
 	else if (keycode == KEY_DOWN && vars->max_iter >= 20)
 		vars->max_iter -= 10;
+	else if (keycode == MAIN_PAD_ESC)
+		exit_cb(vars);
+	else if (keycode == KEY_N || keycode == KEY_M)
+		vars->zoom_speed *= (keycode == KEY_N) ? 2.0 : 0.5;
 	draw(vars);
 	return (0);
 }
@@ -53,9 +58,9 @@ int		scroll_cb(int key, int x, int y, t_vars *vars)
 	if (x <= WIN_WIDTH && x >= 0 && y <= WIN_HEIGHT && y >= 0)
 	{
 		if (key == 4 && vars->zoom < INT_MAX)
-			vars->zoom += 100;
+			vars->zoom += 100 * vars->zoom_speed;
 		else if (key == 5 && vars->zoom > INT_MIN)
-			vars->zoom -= 100;
+			vars->zoom -= 100 * vars->zoom_speed;
 	}
 	draw(vars);
 	return (0);
